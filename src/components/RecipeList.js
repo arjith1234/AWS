@@ -25,11 +25,14 @@ function RecipeList() {
     };
 
     return (
+        <>
         <div className="container mt-4">
             <div className="row">
                 {renderRecipes()}
             </div>
         </div>
+   
+        </>
     );
 }
 

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import RecipeForm from './RecipeForm'; // Update the import to your RecipeForm component.
+import RecipeForm from './RecipeForm';
 import Axios from 'axios';
 
 function UploadRecipe() {
     const [recipeData, setRecipeData] = useState({
-        image: null,
         description: '',
     });
 
@@ -12,14 +11,10 @@ function UploadRecipe() {
         e.preventDefault();
 
         const formData = new FormData();
-        formData.append('image', recipeData.image);
+        formData.append('image', recipeData.image); // Upload the image as part of FormData
         formData.append('description', recipeData.description);
 
-        Axios.post('http://localhost:4000/recipeRoute/upload-recipe', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        })
+        Axios.post('http://localhost:4000/recipeRoute/upload-recipe', formData)
             .then((res) => {
                 if (res.status === 200) {
                     alert('Recipe added successfully');
@@ -45,3 +40,4 @@ function UploadRecipe() {
 }
 
 export default UploadRecipe;
+
